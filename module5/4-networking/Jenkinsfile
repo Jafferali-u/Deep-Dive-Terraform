@@ -24,7 +24,7 @@ pipeline {
             steps {
                 dir('module5/4-networking/'){
                     sh 'terraform --version'
-                    sh "terraform init -input=false -plugin-dir=/var/jenkins_home/terraform_plugins \
+                    sh "terraform init -input=false  \
                      --backend-config='dynamodb_table=${params.DYNAMODB_STATELOCK}' --backend-config='bucket=${params.NETWORKING_BUCKET}' \
                      --backend-config='access_key=$NETWORKING_ACCESS_KEY' --backend-config='secret_key=$NETWORKING_SECRET_KEY' \
                      --backend-config='region=${params.REGION}'"
