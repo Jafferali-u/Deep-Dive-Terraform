@@ -25,7 +25,7 @@ pipeline {
         stage('ApplicationInit'){
             steps {
                 dir('module5/5-applications/'){
-                    sh "terraform init -input=false -plugin-dir=/var/jenkins_home/terraform_plugins \
+                    sh "terraform init -input=false \
                      --backend-config='dynamodb_table=${params.DYNAMODB_STATELOCK}' --backend-config='bucket=${params.APPLICATION_BUCKET}' \
                      --backend-config='access_key=$APPLICATION_ACCESS_KEY' --backend-config='secret_key=$APPLICATION_SECRET_KEY' \
                      --backend-config='region=${params.REGION}'"
